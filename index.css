@@ -1,0 +1,60 @@
+html *{
+	font-family: Arial;
+}
+p{
+    color: #222;
+}
+a{
+	text-decoration: none;
+        color:inherit;
+}
+body{
+	margin: 0;
+        min-height: 1600px;
+}
+
+/* Using and id for the nav bar */
+#nav{
+	list-style-type: none;
+	margin: 0;
+	padding: 0 20%;
+  	overflow: hidden;
+  	background-color: #555;
+  	width: auto;
+}
+#nav li{
+	float: right;
+}
+
+#nav li a{
+	display: block;
+	color: #BBB;
+	text-align: center;
+	padding: 14px 14px;
+}
+
+#nav a:hover{
+	background-color: #222;
+}
+
+.content{
+    width:60%;
+    margin:auto
+}
+.content a:hover{
+    color:blue;
+}
+
+.code{
+    white-space: pre-wrap;
+    font-family: monospace;
+    margin: auto;
+    background: #AAA;
+}
+
+h1{
+    font-size: 1.5em;
+}
+h2{
+    font-size: 1em;
+}

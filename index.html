@@ -1,0 +1,92 @@
+<!<!DOCTYPE html>
+<head>
+    <title>
+        Look at my Stuff
+    </title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+<body>
+    <!-- nav bar -->
+    <ul id="nav">
+        <!-- I'll add the <a> tags later-->
+        <li style="float:left"><a href="">Home</a></li>
+        <li><a href="hireme.html">Hire Me Please</a></li>
+        <li><a href="homework.html">Homework</a></li>
+        <li><a href="projects.html">Projects</a></li>
+    </ul>
+    
+    <div class="content">
+        <h1>Welcome!</h1>
+        <p>Hello there, thank you for visiting my little corner of the internet.
+           There's not much here right now but I will be adding to this website
+           with various projects I've worked on as well as homework assignments.
+           Hopefully I don't reach the 30 MB limit too fast. Also the nav bar
+           doesn't actually work just yet, as you may have noticed. For now I'll
+           just have a short description of one of my projects with some fun pictures.
+        </p>        
+        <h2><a href="https://github.com/ErikBZ/IsItACartoon">
+            Photoness: How to judge whether or not a digital image is a photo
+        </a></h2>
+        <p>
+            Currently I'm messing around with digital images and trying to get a
+            computer to differentiate photos from other types of pictures, such
+            as paintings, cartoons, and 2d renders of 3d video games, or animated works.
+            As of right now, I am using ppm images since those are the easiest to read
+            and the only image files that I decided to research. Also we used ppm
+            in CS 262 and I didn't feel like learning how to get info from png's or
+            jpeg's.<br><br>
+            Since ppm images are just giant matrices of bytes, they can be read into
+            a 2d array or a really large array where the positions will be deciphered
+            later on, which is what I chose to do. Kind of I studied the the image.c
+            program that was given to us for CS 262 to create my own which is similar
+            but has a lot less functionality. Given that simple base, I wrote a program
+            that calculates color blobs within an image using a simple queue and a 
+            breadth first search. Using a queue basically makes the search breadth first
+            anyway. Using a stack, or a depth first search causes some issues
+            where the the head of searcher begins to hit itself. At least this
+            was the case the way I implemented it. The basic algorithm I used is as follows:
+        <p>
+            <div>
+                <p class="code">
+                /* 
+                    Given an array "visisted" of bools where all indeces that have been
+                    added to another blob are true, and all others are false,
+                    a starting index "start", and an array of pixels "img"
+                */
+                Blob b;
+                // instantiate b
+                Queue intQueue
+                // instantiate intQueue
+                enqueue(intQueue, start);
+                visited[start] = true;      // the starting index will be added
+                while(intQueue.size != 0)
+                {
+                    int next = dequeue(intQueue);   // get the next index
+                    AddToBlob(b, next);             // add the index to the blob
+                    AverageColors(b, img[next]);    // average out the colors
+                    
+                    int up = GetPixelUp(next, img); // do the same for left, right, down
+                    
+                    if(up != -1 && visited[up] && ColorIsSimilar(next, up))
+                    {
+                        enqueue(intQueue, up);
+                        visited[up] = 1;
+                    }
+                    // once again do the same for left, right, down
+                }
+                <p>
+            </div>
+        <p>
+            <img src="pics/demo_run.png" ALIGN="right">
+            The image on the right shows some sample output of the first part of
+            the program which calculates various metrics of the image. As of now
+            I don't know how well I chose the metrics to use for the calculation
+            of "photoness" but I am still messing with these numbers to get the
+            best possible solution. After these metrics are caculated, the statistics
+            are fed into the second part of the program which uses a genetic algorithmn
+            to find the best way to calculate photoness from the given metrics.
+            The source code is currently on my
+            <a href="https://github.com/ErikBZ/IsItACartoon" style="text-decoration: underline">github</a>.
+        </p>
+    </div>
+</body>
